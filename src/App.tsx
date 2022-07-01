@@ -1,18 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import {useAppDispatch, useAppSelector} from './app/hooks';
-import {switchTheme} from './store/slices/main';
+import {useAppSelector} from './app/hooks';
+import {Notify} from './renderer';
 
 const App = () => {
-  const dispatch = useAppDispatch();
+  const [value, setValue] = useState('');
   const {theme} = useAppSelector(({main}) => ({
     theme: main.theme,
   }));
 
+  const sendNotification = () => {
+    Notify('Title', value);
+  };
+
   return (
     <div>
       {theme}
-      <button onClick={() => dispatch(switchTheme())}>toggle</button>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+      />
+      <button onClick={sendNotification}>Send Notification</button>
     </div>
   );
 };

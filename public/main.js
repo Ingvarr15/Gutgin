@@ -1,4 +1,4 @@
-const {app, BrowserWindow, nativeImage} = require('electron');
+const {app, BrowserWindow, nativeImage, ipcMain} = require('electron');
 const {
   default: installExtension,
   REDUX_DEVTOOLS,
@@ -8,8 +8,6 @@ require('@electron/remote/main').initialize();
 const path = require('path');
 const isDev = require('electron-is-dev');
 const image = nativeImage.createFromPath(__dirname + '/logo512.png');
-
-image.setTemplateImage(true);
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -22,6 +20,10 @@ function createWindow() {
       contextIsolation: false,
     },
   });
+
+  if (process.platform === 'win32') {
+    app.setAppUserModelId('Gutgin');
+  }
 
   if (!isDev) {
     win.removeMenu();
