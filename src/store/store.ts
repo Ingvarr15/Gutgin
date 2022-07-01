@@ -4,7 +4,7 @@ import persistCombineReducers from 'redux-persist/es/persistCombineReducers';
 import storage from 'redux-persist/lib/storage';
 import {createFilter} from 'redux-persist-transform-filter';
 
-import mainReducer from '../store/slices/main';
+import mainReducer from './slices/main';
 
 const saveTheme = createFilter('main', ['theme']);
 

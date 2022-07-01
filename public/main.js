@@ -1,4 +1,4 @@
-const {app, BrowserWindow, nativeImage, ipcMain} = require('electron');
+const {app, BrowserWindow, nativeImage} = require('electron');
 const {
   default: installExtension,
   REDUX_DEVTOOLS,

@@ -1,6 +1,11 @@
-import Logo from './assets/images/logo512.png';
+import Logo from '../assets/images/logo512.png';
 
-export const Notify = async (title, body) => {
+interface NotifyProps {
+  title: string;
+  body: string;
+}
+
+export const Notify = async ({title, body}: NotifyProps) => {
   try {
     await Notification.requestPermission();
     new Notification(title, {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-import {useAppSelector} from './app/hooks';
-import {Notify} from './renderer';
+import {useAppSelector} from './store/hooks';
+import {Notify} from './utils/Notify';
 
 const App = () => {
   const [value, setValue] = useState('');
@@ -10,7 +10,10 @@ const App = () => {
   }));
 
   const sendNotification = () => {
-    Notify('Title', value);
+    Notify({
+      title: 'A new notification',
+      body: value,
+    });
   };
 
   return (
